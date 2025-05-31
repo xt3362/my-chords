@@ -4,9 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
+    "build:gh-pages": "powershell -Command \"$env:NODE_ENV='production'; $env:VITE_BASE_PATH='/pub.my-chords/'; npm run build\"",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "deploy:prepare": "npm run build:gh-pages && xcopy /E /I /Y .\\build\\client .\\dist"
   },
   "dependencies": {
     "@react-router/node": "^7.5.3",
@@ -20,12 +25,18 @@
   "devDependencies": {
     "@react-router/dev": "^7.5.3",
     "@tailwindcss/vite": "^4.1.4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "cross-env": "^7.0.3",
+    "jsdom": "^26.1.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.4"
   }
 }

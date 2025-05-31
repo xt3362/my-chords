@@ -290,13 +290,15 @@ export default function CircleOfFifths({ onChordSelect, selectedChord, selectedS
           </div>
         )}
       </div>
-      
-      <div className="flex justify-center">
+        <div className="flex justify-center">
         <svg 
           width={SVG_SIZE} 
           height={SVG_SIZE} 
           viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
           className="circle-of-fifths-svg"
+          data-testid="circle-of-fifths-svg"
+          role="img"
+          aria-label="五度圏図"
         >
           {/* 外側の円（メジャーキー） */}
           <circle 
